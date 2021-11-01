@@ -1,7 +1,83 @@
 <!DOCTYPE html>
 <html>
+
+<head><title>DATA608 Homework 5: Basic Javascipt Webpage</title></head>
+
 <body>
-<h1>Hello World!</h1>
-<p>I'm hosted with GitHub Pages.</p>
+
+    <h1>CUNY DATA608 Homework 5</h1>
+    <h2>Basic Javascipt Webpage</h2>
+    <h3>Douglas Barley</h3>
+
+    <!-- First task -->
+    <h3>Reverse text</h3>
+
+    <script type="text/javascript">
+    document.write('<p>Create a function to reverse any word that you type in. This can be typed into either an input box or an alert box, and then print the result in a box or on the webpage.</p>')
+
+    document.write('<p>Enter a word or phrase to be reversed.</p><br>')
+
+    function rev(str){
+        var splitText = str.split("");
+        var reverseText = splitText.reverse();
+        var joinText =  reverseText.join("");
+        return joinText;
+    };
+
+    function reversed() {
+        var t = document.getElementById("target");
+        t.innerHTML = rev(document.getElementById('str').value);
+    }
+    </script>
+
+    <form name="reversed_text">
+        <input id="str" type="str" size="50">
+        <input type="button" value="reverse text" onClick="reversed();">
+    </form>
+    <br>
+
+    <div id="target"></div>
+</body>
+
+<body>
+    <!-- Second task -->
+    <h3>Multiples of a number</h3>
+
+    <script type="text/javascript">
+    document.write('<p>Create a function that takes an input number, and prints a table with the first 20 multiples of the number, in order 5x4.</p>')
+
+    document.write('<p>Pick a number, any number.</p><br>')
+
+    function mult(num){
+        list = [];
+        var next_mult = '<table border="2">';
+        for (i = 1; i <= 20; i++) {list.push(num * i)};
+        for (i = 0; i < 20; i++) {
+            if (i % 4 == 0) {
+                next_mult = next_mult + '<tr>'
+            };
+            next_mult = next_mult + '<td>'+ list[i] + '</td>';
+            if (i % 4 == 3){
+                next_mult = next_mult + '</tr>'
+            };
+        };
+        next_mult = next_mult + '</table>';
+        return next_mult
+    };
+
+    function return_table(){
+        var tbl = document.getElementById("target2");
+        tbl.innerHTML = mult(document.getElementById('num').value);
+    }
+
+    </script>
+
+    <form name="num_multiples">
+        <input id="num" type="number" size="10">
+        <input type="button" value="Make Multiples" onClick="return_table();">
+    </form>
+    <br>
+    <div id="target2"></div>
+
 </body>
 </html>
